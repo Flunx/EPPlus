@@ -1,27 +1,39 @@
-﻿using System;
-using System.Diagnostics;
-using System.Globalization;
-using System.Text;
+﻿//------------------------------------------------------------------------------
+// <copyright file="Color.cs" company="Microsoft">
+//     Copyright (c) Microsoft Corporation.  All rights reserved.
+// </copyright>                                                                
+//------------------------------------------------------------------------------
 
 namespace EPPlus.Drawing
 {
-    //------------------------------------------------------------------------------
-    // <copyright file="Color.cs" company="Microsoft">
-    //     Copyright (c) Microsoft Corporation.  All rights reserved.
-    // </copyright>                                                                
-    //------------------------------------------------------------------------------
+    using System.Globalization;
+    using System.Text;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System;
+    using System.ComponentModel;
 
+    /// <devdoc>
     ///    Represents an ARGB color.
-    [Serializable]
+    /// </devdoc>
+    [
+    Serializable(),
+    TypeConverter(typeof(ColorConverter)),
+    DebuggerDisplay("{NameAndARGBValue}")
+    ]
     public struct Color
     {
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static readonly Color Empty = new Color();
 
         // -------------------------------------------------------------------
         //  static list of "web" colors...
         //
-
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Transparent
         {
             get
@@ -29,7 +41,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Transparent);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color AliceBlue
         {
             get
@@ -37,6 +51,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.AliceBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color AntiqueWhite
         {
             get
@@ -44,6 +61,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.AntiqueWhite);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Aqua
         {
             get
@@ -51,6 +71,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Aqua);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Aquamarine
         {
             get
@@ -58,7 +81,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Aquamarine);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Azure
         {
             get
@@ -66,7 +91,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Azure);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Beige
         {
             get
@@ -74,7 +101,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Beige);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Bisque
         {
             get
@@ -82,7 +111,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Bisque);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Black
         {
             get
@@ -90,7 +121,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Black);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color BlanchedAlmond
         {
             get
@@ -98,7 +131,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.BlanchedAlmond);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Blue
         {
             get
@@ -106,7 +141,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Blue);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color BlueViolet
         {
             get
@@ -114,7 +151,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.BlueViolet);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Brown
         {
             get
@@ -122,7 +161,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Brown);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color BurlyWood
         {
             get
@@ -130,7 +171,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.BurlyWood);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color CadetBlue
         {
             get
@@ -138,7 +181,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.CadetBlue);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Chartreuse
         {
             get
@@ -146,7 +191,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Chartreuse);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Chocolate
         {
             get
@@ -154,7 +201,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Chocolate);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Coral
         {
             get
@@ -162,7 +211,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Coral);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color CornflowerBlue
         {
             get
@@ -170,7 +221,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.CornflowerBlue);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Cornsilk
         {
             get
@@ -178,7 +231,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Cornsilk);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Crimson
         {
             get
@@ -186,7 +241,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Crimson);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Cyan
         {
             get
@@ -194,7 +251,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Cyan);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkBlue
         {
             get
@@ -202,7 +261,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkBlue);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkCyan
         {
             get
@@ -210,7 +271,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkCyan);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkGoldenrod
         {
             get
@@ -218,7 +281,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkGoldenrod);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkGray
         {
             get
@@ -226,7 +291,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkGray);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkGreen
         {
             get
@@ -234,7 +301,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkGreen);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkKhaki
         {
             get
@@ -242,7 +311,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkKhaki);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkMagenta
         {
             get
@@ -250,7 +321,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkMagenta);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkOliveGreen
         {
             get
@@ -258,7 +331,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkOliveGreen);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkOrange
         {
             get
@@ -266,7 +341,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkOrange);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkOrchid
         {
             get
@@ -274,7 +351,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkOrchid);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkRed
         {
             get
@@ -282,7 +361,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkRed);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkSalmon
         {
             get
@@ -290,7 +371,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkSalmon);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkSeaGreen
         {
             get
@@ -298,7 +381,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkSeaGreen);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkSlateBlue
         {
             get
@@ -306,7 +391,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkSlateBlue);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkSlateGray
         {
             get
@@ -314,7 +401,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkSlateGray);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkTurquoise
         {
             get
@@ -322,7 +411,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkTurquoise);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DarkViolet
         {
             get
@@ -330,6 +421,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DarkViolet);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DeepPink
         {
             get
@@ -337,6 +431,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DeepPink);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DeepSkyBlue
         {
             get
@@ -344,6 +441,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DeepSkyBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DimGray
         {
             get
@@ -351,6 +451,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DimGray);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color DodgerBlue
         {
             get
@@ -358,6 +461,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.DodgerBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Firebrick
         {
             get
@@ -365,6 +471,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Firebrick);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color FloralWhite
         {
             get
@@ -372,6 +481,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.FloralWhite);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color ForestGreen
         {
             get
@@ -379,6 +491,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.ForestGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Fuchsia
         {
             get
@@ -386,6 +501,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Fuchsia);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Gainsboro
         {
             get
@@ -393,6 +511,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Gainsboro);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color GhostWhite
         {
             get
@@ -400,6 +521,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.GhostWhite);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Gold
         {
             get
@@ -407,6 +531,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Gold);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Goldenrod
         {
             get
@@ -414,6 +541,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Goldenrod);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Gray
         {
             get
@@ -421,6 +551,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Gray);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Green
         {
             get
@@ -428,6 +561,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Green);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color GreenYellow
         {
             get
@@ -435,6 +571,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.GreenYellow);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Honeydew
         {
             get
@@ -442,6 +581,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Honeydew);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color HotPink
         {
             get
@@ -449,6 +591,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.HotPink);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color IndianRed
         {
             get
@@ -456,6 +601,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.IndianRed);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Indigo
         {
             get
@@ -463,6 +611,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Indigo);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Ivory
         {
             get
@@ -470,6 +621,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Ivory);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Khaki
         {
             get
@@ -477,6 +631,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Khaki);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Lavender
         {
             get
@@ -484,6 +641,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Lavender);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LavenderBlush
         {
             get
@@ -491,6 +651,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LavenderBlush);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LawnGreen
         {
             get
@@ -498,6 +661,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LawnGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LemonChiffon
         {
             get
@@ -505,6 +671,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LemonChiffon);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightBlue
         {
             get
@@ -512,6 +681,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightCoral
         {
             get
@@ -519,6 +691,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightCoral);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightCyan
         {
             get
@@ -526,6 +701,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightCyan);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightGoldenrodYellow
         {
             get
@@ -533,6 +711,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightGoldenrodYellow);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightGreen
         {
             get
@@ -540,6 +721,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightGray
         {
             get
@@ -547,6 +731,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightGray);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightPink
         {
             get
@@ -554,6 +741,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightPink);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightSalmon
         {
             get
@@ -561,6 +751,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightSalmon);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightSeaGreen
         {
             get
@@ -568,6 +761,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightSeaGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightSkyBlue
         {
             get
@@ -575,6 +771,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightSkyBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightSlateGray
         {
             get
@@ -582,6 +781,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightSlateGray);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightSteelBlue
         {
             get
@@ -589,6 +791,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightSteelBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LightYellow
         {
             get
@@ -596,6 +801,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LightYellow);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Lime
         {
             get
@@ -603,6 +811,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Lime);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color LimeGreen
         {
             get
@@ -610,6 +821,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.LimeGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Linen
         {
             get
@@ -617,6 +831,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Linen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Magenta
         {
             get
@@ -624,6 +841,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Magenta);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Maroon
         {
             get
@@ -631,6 +851,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Maroon);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumAquamarine
         {
             get
@@ -638,6 +861,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumAquamarine);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumBlue
         {
             get
@@ -645,6 +871,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumOrchid
         {
             get
@@ -652,6 +881,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumOrchid);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumPurple
         {
             get
@@ -659,6 +891,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumPurple);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumSeaGreen
         {
             get
@@ -666,6 +901,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumSeaGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumSlateBlue
         {
             get
@@ -673,6 +911,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumSlateBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumSpringGreen
         {
             get
@@ -680,6 +921,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumSpringGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumTurquoise
         {
             get
@@ -687,6 +931,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumTurquoise);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MediumVioletRed
         {
             get
@@ -694,6 +941,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MediumVioletRed);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MidnightBlue
         {
             get
@@ -701,6 +951,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MidnightBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MintCream
         {
             get
@@ -708,6 +961,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MintCream);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color MistyRose
         {
             get
@@ -715,6 +971,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.MistyRose);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Moccasin
         {
             get
@@ -722,6 +981,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Moccasin);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color NavajoWhite
         {
             get
@@ -729,6 +991,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.NavajoWhite);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Navy
         {
             get
@@ -736,6 +1001,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Navy);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color OldLace
         {
             get
@@ -743,6 +1011,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.OldLace);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Olive
         {
             get
@@ -750,6 +1021,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Olive);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color OliveDrab
         {
             get
@@ -757,6 +1031,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.OliveDrab);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Orange
         {
             get
@@ -764,6 +1041,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Orange);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color OrangeRed
         {
             get
@@ -771,6 +1051,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.OrangeRed);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Orchid
         {
             get
@@ -778,6 +1061,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Orchid);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color PaleGoldenrod
         {
             get
@@ -785,6 +1071,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.PaleGoldenrod);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color PaleGreen
         {
             get
@@ -792,6 +1081,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.PaleGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color PaleTurquoise
         {
             get
@@ -799,6 +1091,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.PaleTurquoise);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color PaleVioletRed
         {
             get
@@ -806,6 +1101,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.PaleVioletRed);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color PapayaWhip
         {
             get
@@ -813,6 +1111,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.PapayaWhip);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color PeachPuff
         {
             get
@@ -820,6 +1121,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.PeachPuff);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Peru
         {
             get
@@ -827,6 +1131,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Peru);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Pink
         {
             get
@@ -834,6 +1141,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Pink);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Plum
         {
             get
@@ -841,6 +1151,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Plum);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color PowderBlue
         {
             get
@@ -848,6 +1161,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.PowderBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Purple
         {
             get
@@ -855,6 +1171,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Purple);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Red
         {
             get
@@ -862,6 +1181,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Red);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color RosyBrown
         {
             get
@@ -869,6 +1191,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.RosyBrown);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color RoyalBlue
         {
             get
@@ -876,6 +1201,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.RoyalBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SaddleBrown
         {
             get
@@ -883,6 +1211,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SaddleBrown);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Salmon
         {
             get
@@ -890,6 +1221,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Salmon);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SandyBrown
         {
             get
@@ -897,6 +1231,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SandyBrown);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SeaGreen
         {
             get
@@ -904,6 +1241,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SeaGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SeaShell
         {
             get
@@ -911,6 +1251,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SeaShell);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Sienna
         {
             get
@@ -918,6 +1261,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Sienna);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Silver
         {
             get
@@ -925,6 +1271,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Silver);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SkyBlue
         {
             get
@@ -932,6 +1281,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SkyBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SlateBlue
         {
             get
@@ -939,6 +1291,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SlateBlue);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SlateGray
         {
             get
@@ -946,6 +1301,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SlateGray);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Snow
         {
             get
@@ -953,6 +1311,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Snow);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SpringGreen
         {
             get
@@ -960,6 +1321,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SpringGreen);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color SteelBlue
         {
             get
@@ -967,7 +1331,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.SteelBlue);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Tan
         {
             get
@@ -975,7 +1341,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Tan);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Teal
         {
             get
@@ -983,7 +1351,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Teal);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Thistle
         {
             get
@@ -991,7 +1361,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Thistle);
             }
         }
-
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Tomato
         {
             get
@@ -999,6 +1371,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Tomato);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Turquoise
         {
             get
@@ -1006,6 +1381,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Turquoise);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Violet
         {
             get
@@ -1013,6 +1391,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Violet);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Wheat
         {
             get
@@ -1020,6 +1401,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Wheat);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color White
         {
             get
@@ -1027,6 +1411,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.White);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color WhiteSmoke
         {
             get
@@ -1034,6 +1421,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.WhiteSmoke);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color Yellow
         {
             get
@@ -1041,6 +1431,9 @@ namespace EPPlus.Drawing
                 return new Color(KnownColor.Yellow);
             }
         }
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public static Color YellowGreen
         {
             get
@@ -1092,6 +1485,7 @@ namespace EPPlus.Drawing
         //
         private readonly short state;
 
+
         internal Color(KnownColor knownColor)
         {
             value = 0;
@@ -1108,7 +1502,9 @@ namespace EPPlus.Drawing
             this.knownColor = unchecked((short)knownColor);
         }
 
-        ///    Gets the red component value for this <see cref='EPPlus.Color'/>.
+        /// <devdoc>
+        ///    Gets the red component value for this <see cref='Color'/>.
+        /// </devdoc>
         public byte R
         {
             get
@@ -1117,7 +1513,9 @@ namespace EPPlus.Drawing
             }
         }
 
-        ///    Gets the green component value for this <see cref='EPPlus.Color'/>.
+        /// <devdoc>
+        ///    Gets the green component value for this <see cref='Color'/>.
+        /// </devdoc>
         public byte G
         {
             get
@@ -1126,8 +1524,11 @@ namespace EPPlus.Drawing
             }
         }
 
-        ///       Gets the blue component value for this <see cref='EPPlus.Color'/>.
+        /// <devdoc>
+        ///    <para>
+        ///       Gets the blue component value for this <see cref='Color'/>.
         ///    </para>
+        /// </devdoc>
         public byte B
         {
             get
@@ -1136,8 +1537,11 @@ namespace EPPlus.Drawing
             }
         }
 
-        ///       Gets the alpha component value for this <see cref='EPPlus.Color'/>.
+        /// <devdoc>
+        ///    <para>
+        ///       Gets the alpha component value for this <see cref='Color'/>.
         ///    </para>
+        /// </devdoc>
         public byte A
         {
             get
@@ -1146,10 +1550,13 @@ namespace EPPlus.Drawing
             }
         }
 
-        ///       Specifies whether this <see cref='EPPlus.Color'/> is a known (predefined) color.
-        ///       Predefined colors are defined in the <see cref='EPPlus.KnownColor'/>
+        /// <devdoc>
+        ///    <para>
+        ///       Specifies whether this <see cref='Color'/> is a known (predefined) color.
+        ///       Predefined colors are defined in the <see cref='EPPlus.Drawing.KnownColor'/>
         ///       enum.
         ///    </para>
+        /// </devdoc>
         public bool IsKnownColor
         {
             get
@@ -1158,7 +1565,9 @@ namespace EPPlus.Drawing
             }
         }
 
-        ///    Specifies whether this <see cref='EPPlus.Color'/> is uninitialized.
+        /// <devdoc>
+        ///    Specifies whether this <see cref='Color'/> is uninitialized.
+        /// </devdoc>
         public bool IsEmpty
         {
             get
@@ -1167,7 +1576,9 @@ namespace EPPlus.Drawing
             }
         }
 
-        ///    Specifies whether this <see cref='EPPlus.Color'/> has a name or is a <see cref='EPPlus.KnownColor'/>.
+        /// <devdoc>
+        ///    Specifies whether this <see cref='Color'/> has a name or is a <see cref='EPPlus.Drawing.KnownColor'/>.
+        /// </devdoc>
         public bool IsNamedColor
         {
             get
@@ -1176,7 +1587,9 @@ namespace EPPlus.Drawing
             }
         }
 
+        /// <devdoc>
         ///     Determines if this color is a system color.
+        /// </devdoc>
         public bool IsSystemColor
         {
             get
@@ -1189,6 +1602,7 @@ namespace EPPlus.Drawing
         // programmatic items.
         // Also, don't inline into the attribute for performance reasons.  This way means the debugger
         // does 1 func-eval instead of 5.
+        [SuppressMessage("Microsoft.Globalization", "CA1303:DoNotPassLiteralsAsLocalizedParameters")]
         private string NameAndARGBValue
         {
             get
@@ -1199,11 +1613,14 @@ namespace EPPlus.Drawing
             }
         }
 
-        ///       Gets the name of this <see cref='EPPlus.Color'/> . This will either return the user
+        /// <devdoc>
+        ///    <para>
+        ///       Gets the name of this <see cref='Color'/> . This will either return the user
         ///       defined name of the color, if the color was created from a name, or
         ///       the name of the known color. For custom colors, the RGB value will
         ///       be returned.
         ///    </para>
+        /// </devdoc>
         public string Name
         {
             get
@@ -1231,7 +1648,9 @@ namespace EPPlus.Drawing
             }
         }
 
+        /// <devdoc>
         ///     Actual color to be rendered.
+        /// </devdoc>
         private long Value
         {
             get
@@ -1252,10 +1671,13 @@ namespace EPPlus.Drawing
         private static void CheckByte(int value, string name)
         {
             if (value < 0 || value > 255)
-                throw new ArgumentException("Value is out of bounds");//SR.GetString(SR.InvalidEx2BoundArgument, name, value, 0, 255));
+                throw new ArgumentException("Argument is out of bounds");
+            //throw new ArgumentException(SR.GetString(SR.InvalidEx2BoundArgument, name, value, 0, 255));
         }
 
+        /// <devdoc>
         ///     Encodes the four values into ARGB (32 bit) format.
+        /// </devdoc>
         private static long MakeArgb(byte alpha, byte red, byte green, byte blue)
         {
             return (long)(unchecked((uint)(red << ARGBRedShift |
@@ -1264,17 +1686,23 @@ namespace EPPlus.Drawing
                          alpha << ARGBAlphaShift))) & 0xffffffff;
         }
 
+        /// <devdoc>
+        ///    <para>
         ///       Creates a Color from its 32-bit component
         ///       (alpha, red, green, and blue) values.
         ///    </para>
+        /// </devdoc>
         public static Color FromArgb(int argb)
         {
             return new Color((long)argb & 0xffffffff, StateARGBValueValid, null, (KnownColor)0);
         }
 
+        /// <devdoc>
+        ///    <para>
         ///       Creates a Color from its 32-bit component (alpha, red,
         ///       green, and blue) values.
         ///    </para>
+        /// </devdoc>
         public static Color FromArgb(int alpha, int red, int green, int blue)
         {
             CheckByte(alpha, "alpha");
@@ -1284,9 +1712,12 @@ namespace EPPlus.Drawing
             return new Color(MakeArgb((byte)alpha, (byte)red, (byte)green, (byte)blue), StateARGBValueValid, null, (KnownColor)0);
         }
 
-        ///       Creates a new <see cref='EPPlus.Color'/> from the specified <see cref='EPPlus.Color'/>, but with
+        /// <devdoc>
+        ///    <para>
+        ///       Creates a new <see cref='Color'/> from the specified <see cref='Color'/>, but with
         ///       the new specified alpha value.
         ///    </para>
+        /// </devdoc>
         public static Color FromArgb(int alpha, Color baseColor)
         {
             CheckByte(alpha, "alpha");
@@ -1294,16 +1725,22 @@ namespace EPPlus.Drawing
             return new Color(MakeArgb(unchecked((byte)alpha), baseColor.R, baseColor.G, baseColor.B), StateARGBValueValid, null, (KnownColor)0);
         }
 
-        ///       Creates a <see cref='EPPlus.Color'/> from the specified red, green, and
+        /// <devdoc>
+        ///    <para>
+        ///       Creates a <see cref='Color'/> from the specified red, green, and
         ///       blue values.
         ///    </para>
+        /// </devdoc>
         public static Color FromArgb(int red, int green, int blue)
         {
             return FromArgb(255, red, green, blue);
         }
 
-        ///       Creates a <see cref='EPPlus.Color'/> from the specified <see cref='EPPlus.KnownColor'/> .
+        /// <devdoc>
+        ///    <para>
+        ///       Creates a <see cref='Color'/> from the specified <see cref='EPPlus.Drawing.KnownColor'/> .
         ///    </para>
+        /// </devdoc>
         public static Color FromKnownColor(KnownColor color)
         {
             if (!IsEnumValid(color, unchecked((int)color), (int)KnownColor.ActiveBorder, (int)KnownColor.MenuHighlight))
@@ -1313,13 +1750,16 @@ namespace EPPlus.Drawing
             return new Color(color);
         }
 
-        private static bool IsEnumValid(Enum enumValue, int value, int minValue, int maxValue)
+        public static bool IsEnumValid(Enum enumValue, int value, int minValue, int maxValue)
         {
             return (value >= minValue) && (value <= maxValue);
         }
 
-        ///       Creates a <see cref='EPPlus.Color'/> with the specified name.
+        /// <devdoc>
+        ///    <para>
+        ///       Creates a <see cref='Color'/> with the specified name.
         ///    </para>
+        /// </devdoc>
         public static Color FromName(string name)
         {
             // try to get a known color first
@@ -1332,9 +1772,12 @@ namespace EPPlus.Drawing
             return new Color(NotDefinedValue, StateNameValid, name, (KnownColor)0);
         }
 
+        /// <devdoc>
+        ///    <para>
         ///       Returns the Hue-Saturation-Brightness (HSB) brightness
-        ///       for this <see cref='EPPlus.Color'/> .
+        ///       for this <see cref='Color'/> .
         ///    </para>
+        /// </devdoc>
         public float GetBrightness()
         {
             float r = (float)R / 255.0f;
@@ -1354,10 +1797,14 @@ namespace EPPlus.Drawing
             return (max + min) / 2;
         }
 
+
+        /// <devdoc>
+        ///    <para>
         ///       Returns the Hue-Saturation-Brightness (HSB) hue
-        ///       value, in degrees, for this <see cref='EPPlus.Color'/> .  
+        ///       value, in degrees, for this <see cref='Color'/> .  
         ///       If R == G == B, the hue is meaningless, and the return value is 0.
         ///    </para>
+        /// </devdoc>
         public Single GetHue()
         {
             if (R == G && G == B)
@@ -1402,10 +1849,13 @@ namespace EPPlus.Drawing
             return hue;
         }
 
+        /// <devdoc>
+        ///    <para>
         ///       The Hue-Saturation-Brightness (HSB) saturation for this
-        ///    <see cref='EPPlus.Color'/>
+        ///    <see cref='Color'/>
         ///    .
         /// </para>
+        /// </devdoc>
         public float GetSaturation()
         {
             float r = (float)R / 255.0f;
@@ -1442,23 +1892,31 @@ namespace EPPlus.Drawing
             return s;
         }
 
-        ///       Returns the ARGB value of this <see cref='EPPlus.Color'/> .
+        /// <devdoc>
+        ///    <para>
+        ///       Returns the ARGB value of this <see cref='Color'/> .
         ///    </para>
+        /// </devdoc>
         public int ToArgb()
         {
             return unchecked((int)Value);
         }
 
-        ///       Returns the <see cref='EPPlus.KnownColor'/> value for this color, if it is
-        ///       based on a <see cref='EPPlus.KnownColor'/> .
+        /// <devdoc>
+        ///    <para>
+        ///       Returns the <see cref='EPPlus.Drawing.KnownColor'/> value for this color, if it is
+        ///       based on a <see cref='EPPlus.Drawing.KnownColor'/> .
         ///    </para>
+        /// </devdoc>
         public KnownColor ToKnownColor()
         {
             return (KnownColor)knownColor;
         }
 
-        ///    Converts this <see cref='EPPlus.Color'/> to a human-readable
+        /// <devdoc>
+        ///    Converts this <see cref='Color'/> to a human-readable
         ///    string.
+        /// </devdoc>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder(32);
@@ -1495,9 +1953,12 @@ namespace EPPlus.Drawing
             return sb.ToString();
         }
 
-        ///       Tests whether two specified <see cref='EPPlus.Color'/> objects
+        /// <devdoc>
+        ///    <para>
+        ///       Tests whether two specified <see cref='Color'/> objects
         ///       are equivalent.
         ///    </para>
+        /// </devdoc>
         public static bool operator ==(Color left, Color right)
         {
             if (left.value == right.value
@@ -1521,17 +1982,22 @@ namespace EPPlus.Drawing
             return false;
         }
 
-        ///       Tests whether two specified <see cref='EPPlus.Color'/> objects
+        /// <devdoc>
+        ///    <para>
+        ///       Tests whether two specified <see cref='Color'/> objects
         ///       are equivalent.
         ///    </para>
+        /// </devdoc>
         public static bool operator !=(Color left, Color right)
         {
             return !(left == right);
         }
 
+        /// <devdoc>
         ///    Tests whether the specified object is a
-        /// <see cref='EPPlus.Color'/> 
-        /// and is equivalent to this <see cref='EPPlus.Color'/>.
+        /// <see cref='Color'/> 
+        /// and is equivalent to this <see cref='Color'/>.
+        /// </devdoc>
         public override bool Equals(object obj)
         {
             if (obj is Color)
@@ -1558,6 +2024,9 @@ namespace EPPlus.Drawing
             return false;
         }
 
+        /// <devdoc>
+        ///    <para>[To be supplied.]</para>
+        /// </devdoc>
         public override int GetHashCode()
         {
             return unchecked(value.GetHashCode() ^
