@@ -30,6 +30,8 @@
  * Jan Källman                      Total rewrite               2010-03-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-27
  * *******************************************************************************/
+
+
 using System;
 using System.Xml;
 using System.Text.RegularExpressions;
@@ -61,7 +63,7 @@ namespace OfficeOpenXml
         /// </summary>
         Right
     }
-    #region class ExcelHeaderFooterText
+#region class ExcelHeaderFooterText
 	/// <summary>
     /// Print header and footer 
     /// </summary>
@@ -117,6 +119,7 @@ namespace OfficeOpenXml
         /// Get/set the text to appear on the right hand side of the header (or footer) on the worksheet.
 		/// </summary>
 		public string RightAlignedText = null;
+        #if !UNITY
         /// <summary>
         /// Inserts a picture at the end of the text in the header or footer
         /// </summary>
@@ -183,6 +186,7 @@ namespace OfficeOpenXml
             //Add VML-drawing            
             return _ws.HeaderFooter.Pictures.Add(id, ii.Uri, "", width, height);
         }
+
         private string ValidateImage(PictureAlignment Alignment)
         {
             string id = string.Concat(Alignment.ToString()[0], _hf);
@@ -208,16 +212,17 @@ namespace OfficeOpenXml
             }
             return id;
         }
-	}
-	#endregion
+#endif
+    }
+#endregion
 
-	#region ExcelHeaderFooter
+#region ExcelHeaderFooter
 	/// <summary>
 	/// Represents the Header and Footer on an Excel Worksheet
 	/// </summary>
 	public sealed class ExcelHeaderFooter : XmlHelper
 	{
-		#region Static Properties
+#region Static Properties
 		/// <summary>
         /// The code for "current page #"
 		/// </summary>
@@ -264,9 +269,9 @@ namespace OfficeOpenXml
         /// The code for "shadow style"
         /// </summary>
         public const string ShadowStyle = @"&H";
-		#endregion
+#endregion
 
-		#region ExcelHeaderFooter Private Properties
+#region ExcelHeaderFooter Private Properties
 		internal ExcelHeaderFooterText _oddHeader;
         internal ExcelHeaderFooterText _oddFooter;
 		internal ExcelHeaderFooterText _evenHeader;
@@ -274,9 +279,9 @@ namespace OfficeOpenXml
         internal ExcelHeaderFooterText _firstHeader;
         internal ExcelHeaderFooterText _firstFooter;
         private ExcelWorksheet _ws;
-        #endregion
+#endregion
 
-		#region ExcelHeaderFooter Constructor
+#region ExcelHeaderFooter Constructor
 		/// <summary>
 		/// ExcelHeaderFooter Constructor
 		/// </summary>
@@ -289,9 +294,9 @@ namespace OfficeOpenXml
             _ws = ws;
             SchemaNodeOrder = new string[] { "headerFooter", "oddHeader", "oddFooter", "evenHeader", "evenFooter", "firstHeader", "firstFooter" };
 		}
-		#endregion
+#endregion
 
-		#region alignWithMargins
+#region alignWithMargins
         const string alignWithMarginsPath="@alignWithMargins";
         /// <summary>
 		/// Gets/sets the alignWithMargins attribute
@@ -307,9 +312,9 @@ namespace OfficeOpenXml
                 SetXmlNodeString(alignWithMarginsPath, value ? "1" : "0");
 			}
 		}
-		#endregion
+#endregion
 
-        #region differentOddEven
+#region differentOddEven
         const string differentOddEvenPath = "@differentOddEven";
         /// <summary>
 		/// Gets/sets the flag that tells Excel to display different headers and footers on odd and even pages.
@@ -325,9 +330,9 @@ namespace OfficeOpenXml
                 SetXmlNodeString(differentOddEvenPath, value ? "1" : "0");
 			}
 		}
-		#endregion
+#endregion
 
-		#region differentFirst
+#region differentFirst
         const string differentFirstPath = "@differentFirst";
 
 		/// <summary>
@@ -344,8 +349,8 @@ namespace OfficeOpenXml
                 SetXmlNodeString(differentFirstPath, value ? "1" : "0");
 			}
 		}
-        #endregion
-        #region ScaleWithDoc
+#endregion
+#region ScaleWithDoc
         const string scaleWithDocPath = "@scaleWithDoc";
         /// <summary>
         /// Specify whether the header and footer should scale as you use the "Shrink to fit" feature on the document
@@ -361,8 +366,8 @@ namespace OfficeOpenXml
                 SetXmlNodeBool(scaleWithDocPath, value);
             }
         }
-        #endregion
-        #region ExcelHeaderFooter Public Properties
+#endregion
+#region ExcelHeaderFooter Public Properties
         /// <summary>
         /// Provides access to the header on odd numbered pages of the document.
         /// If you want the same header on both odd and even pages, then only set values in this ExcelHeaderFooterText class.
@@ -453,6 +458,8 @@ namespace OfficeOpenXml
                 return _firstFooter; 
             } 
         }
+
+#if !UNITY
         private ExcelVmlDrawingPictureCollection _vmlDrawingsHF = null;
         /// <summary>
         /// Vml drawings. Underlaying object for Header footer images
@@ -483,11 +490,13 @@ namespace OfficeOpenXml
                 return _vmlDrawingsHF;
             }
         }
+#endif
+
         #endregion
-            #region Save  //  ExcelHeaderFooter
-            /// <summary>
-            /// Saves the header and footer information to the worksheet XML
-            /// </summary>
+        #region Save  //  ExcelHeaderFooter
+        /// <summary>
+        /// Saves the header and footer information to the worksheet XML
+        /// </summary>
         internal void Save()
 		{
 			if (_oddHeader != null)
@@ -525,6 +534,7 @@ namespace OfficeOpenXml
 				}
 			}
 		}
+        #if !UNITY
         internal void SaveHeaderFooterImages()
         {
             if (_vmlDrawingsHF != null)
@@ -559,6 +569,7 @@ namespace OfficeOpenXml
                 }
             }
         }
+#endif
 		private string GetText(ExcelHeaderFooterText headerFooter)
 		{
 			string ret = "";
@@ -570,7 +581,7 @@ namespace OfficeOpenXml
 				ret += "&R" + headerFooter.RightAlignedText;
 			return ret;
 		}
-		#endregion
+#endregion
 	}
-	#endregion
+#endregion
 }

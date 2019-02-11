@@ -29,7 +29,9 @@
  * Jan Källman		Initial Release		        2010-06-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
-using System;
+
+#if !UNITY
+ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
@@ -281,7 +283,7 @@ namespace OfficeOpenXml.Drawing.Vml
             }
         }
 
-        #region Private Methods
+#region Private Methods
         private double GetFracDT(string v, double def)
         {
             double d;
@@ -352,6 +354,8 @@ namespace OfficeOpenXml.Drawing.Vml
             }
             return 0;
         }
-        #endregion
+#endregion
     }
 }
+
+#endif

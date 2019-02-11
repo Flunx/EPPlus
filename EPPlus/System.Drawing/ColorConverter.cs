@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Reflection;
 
-namespace System.Drawing
+namespace EPPlus.Drawing
 {
     //------------------------------------------------------------------------------
     // <copyright file="ColorConverter.cs" company="Microsoft">

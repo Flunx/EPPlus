@@ -29,6 +29,7 @@
  * Jan Källman		Initial Release		        2010-06-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
+#if !UNITY
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -160,13 +161,14 @@ namespace OfficeOpenXml.Drawing.Vml
             _nextID++;
             return "vml" + _nextID.ToString();
         }
-        #region IEnumerable Members
+#region IEnumerable Members
 
         IEnumerator IEnumerable.GetEnumerator() 
         {
             return _images.GetEnumerator();
         }
 
-        #endregion
+#endregion
     }
 }
+ #endif

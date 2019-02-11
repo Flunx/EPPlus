@@ -346,11 +346,12 @@ namespace OfficeOpenXml.Drawing
             {
                 return new ExcelShape(drawings, node);
             }
-            //}
+#if !UNITY
             else if (node.SelectSingleNode("xdr:pic", drawings.NameSpaceManager) != null)
             {
                 return new ExcelPicture(drawings, node);
             }
+#endif
             else if (node.SelectSingleNode("xdr:graphicFrame", drawings.NameSpaceManager) != null)
             {
                 return ExcelChart.GetChart(drawings, node);
@@ -436,7 +437,7 @@ namespace OfficeOpenXml.Drawing
                     return eTextVerticalType.Horizontal;
             }
         }
-        #region "Internal sizing functions"
+#region "Internal sizing functions"
         internal int GetPixelLeft()
         {
             ExcelWorksheet ws = _drawings.Worksheet;
@@ -661,8 +662,8 @@ namespace OfficeOpenXml.Drawing
             To.ColumnOff = prevPixOff * EMU_PER_PIXEL;
             _doNotAdjust = false;
         }
-        #endregion
-        #region "Public sizing functions"
+#endregion
+#region "Public sizing functions"
         /// <summary>
         /// Set the top left corner of a drawing. 
         /// Note that resizing columns / rows after using this function will effect the position of the drawing
@@ -755,7 +756,7 @@ namespace OfficeOpenXml.Drawing
             SetPixelHeight(PixelHeight);
             _doNotAdjust = false;
         }
-        #endregion
+#endregion
         internal virtual void DeleteMe()
         {
             TopNode.ParentNode.RemoveChild(TopNode);

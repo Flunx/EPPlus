@@ -29,6 +29,7 @@
  * Jan Källman		Added		10-SEP-2009
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
+#if !UNITY
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,6 +62,7 @@ namespace OfficeOpenXml
             _workSheet = workSheet;
         }
         
+
         const string BACKGROUNDPIC_PATH = "d:picture/@r:id";
         /// <summary>
         /// The background image of the worksheet. 
@@ -171,3 +173,4 @@ namespace OfficeOpenXml
         }
     }
 }
+ #endif

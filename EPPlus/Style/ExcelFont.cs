@@ -209,6 +209,7 @@ namespace OfficeOpenXml.Style
                 _ChangedEvent(this, new StyleChangeEventArgs(eStyleClass.Font, eStyleProperty.VerticalAlign, value, _positionID, _address));
             }
         }
+#if !UNITY
         /// <summary>
         /// Set the font from a Font object
         /// </summary>
@@ -223,7 +224,7 @@ namespace OfficeOpenXml.Style
             UnderLine = Font.Underline;
             Italic = Font.Italic;
         }
-
+#endif
         internal override string Id
         {
             get 

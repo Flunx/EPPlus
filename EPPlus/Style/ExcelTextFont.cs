@@ -289,6 +289,8 @@ namespace OfficeOpenXml.Style
             }
         }
         #endregion
+
+#if !UNITY
         /// <summary>
         /// Set the font style from a font object
         /// </summary>
@@ -303,5 +305,6 @@ namespace OfficeOpenXml.Style
             if (Font.Underline) UnderLine = eUnderLineType.Single;
             if (Font.Strikeout) Strike = eStrikeType.Single;
         }
+#endif
     }
 }

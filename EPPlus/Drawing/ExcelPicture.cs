@@ -29,6 +29,7 @@
  * Jan Källman		                Initial Release		        2009-10-01
  * Jan Källman		License changed GPL-->LGPL 2011-12-16
  *******************************************************************************/
+#if !UNITY
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -48,7 +49,7 @@ namespace OfficeOpenXml.Drawing
     /// </summary>
     public sealed class ExcelPicture : ExcelDrawing
     {
-        #region "Constructors"
+#region "Constructors"
         internal ExcelPicture(ExcelDrawings drawings, XmlNode node) :
             base(drawings, node, "xdr:pic/xdr:nvPicPr/xdr:cNvPr/@name")
         {
@@ -225,7 +226,7 @@ namespace OfficeOpenXml.Drawing
             newPic.relID = relID;
             //_drawings._pics.Add(newPic);
         }
-        #endregion
+#endregion
         private string SavePicture(Image image)
         {
 #if (Core)
@@ -441,3 +442,4 @@ namespace OfficeOpenXml.Drawing
         }
     }
 }
+ #endif

@@ -298,6 +298,7 @@ namespace OfficeOpenXml.Drawing
             {
                 return AddChart(Name, ChartType, null);
             }
+#if !UNITY
             /// <summary>
             /// Add a picure to the worksheet
             /// </summary>
@@ -372,6 +373,7 @@ namespace OfficeOpenXml.Drawing
                }
                throw (new Exception("AddPicture: ImageFile can't be null"));
             }
+#endif
 
         /// <summary>
         /// Add a new shape to the worksheet
@@ -379,7 +381,7 @@ namespace OfficeOpenXml.Drawing
         /// <param name="Name">Name</param>
         /// <param name="Style">Shape style</param>
         /// <returns>The shape object</returns>
-    
+
         public ExcelShape AddShape(string Name, eShapeStyle Style)
             {
                 if (Worksheet is ExcelChartsheet && _drawings.Count > 0)

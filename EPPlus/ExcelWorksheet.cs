@@ -2958,7 +2958,9 @@ namespace OfficeOpenXml
                         }
 
                         SaveComments();
+#if !UNITY
                         HeaderFooter.SaveHeaderFooterImages();
+#endif
                         SaveTables();
                         SavePivotTables();
                     }
@@ -4164,7 +4166,7 @@ namespace OfficeOpenXml
             }
         }
 
-        #region Drawing
+#region Drawing
         ExcelDrawings _drawings = null;
         /// <summary>
         /// Collection of drawing-objects like shapes, images and charts
@@ -4180,8 +4182,8 @@ namespace OfficeOpenXml
                 return _drawings;
             }
         }
-        #endregion
-        #region SparklineGroups
+#endregion
+#region SparklineGroups
         ExcelSparklineGroupCollection _sparklineGroups = null;
         /// <summary>
         /// Collection of Sparkline-objects. 
@@ -4198,7 +4200,7 @@ namespace OfficeOpenXml
                 return _sparklineGroups;
             }
         }
-        #endregion
+#endregion
         ExcelTableCollection _tables = null;
         /// <summary>
         /// Tables defined in the worksheet.
@@ -4274,7 +4276,7 @@ namespace OfficeOpenXml
         {
             _dataValidation = null;
         }
-
+#if !UNITY
         ExcelBackgroundImage _backgroundImage = null;
         /// <summary>
         /// An image displayed as the background of the worksheet.
@@ -4290,6 +4292,7 @@ namespace OfficeOpenXml
                 return _backgroundImage;
             }
         }
+#endif
         /// <summary>
 		/// Returns the style ID given a style name.  
 		/// The style ID will be created if not found, but only if the style name exists!
@@ -4483,7 +4486,7 @@ namespace OfficeOpenXml
             return obj.WorksheetXml.OuterXml.GetHashCode();
         }
 
-        #region Worksheet internal Accessor
+#region Worksheet internal Accessor
         /// <summary>
         /// Get accessor of sheet value
         /// </summary>

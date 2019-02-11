@@ -36,10 +36,8 @@ using System.ComponentModel;
 using System.Text;
 using System.Data;
 using System.Threading;
-using OfficeOpenXml.FormulaParsing;
 using OfficeOpenXml.Style;
 using System.Xml;
-using System.Drawing;
 using System.Globalization;
 using System.Collections;
 using OfficeOpenXml.Table;
@@ -47,14 +45,10 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Linq;
 using OfficeOpenXml.DataValidation;
-using OfficeOpenXml.DataValidation.Contracts;
 using System.Reflection;
 using OfficeOpenXml.Style.XmlAccess;
-using System.Security;
 using OfficeOpenXml.ConditionalFormatting;
-using OfficeOpenXml.ConditionalFormatting.Contracts;
 using OfficeOpenXml.FormulaParsing.LexicalAnalysis;
-using w = System.Windows;
 using OfficeOpenXml.Utils;
 using OfficeOpenXml.Compatibility;
 
@@ -766,6 +760,8 @@ namespace OfficeOpenXml
                 return GetFormattedText(false);
             }
         }
+
+        #if !UNITY
         /// <summary>
         /// Set the column width from the content of the range. The minimum width is the value of the ExcelWorksheet.defaultColumnWidth property.
         /// Note: Cells containing formulas must be calculated before autofit is called.
@@ -950,7 +946,7 @@ namespace OfficeOpenXml
             _worksheet.Drawings.AdjustWidth(drawWidths);
             _worksheet._package.DoAdjustDrawings = doAdjust;
         }
-
+#endif
         private void SetMinWidth(double minimumWidth, int fromCol, int toCol)
         {
             var iterator = new CellsStoreEnumerator<ExcelCoreValue>(_worksheet._values, 0, fromCol, 0, toCol);
@@ -1516,8 +1512,8 @@ namespace OfficeOpenXml
                 return fullAddress;
             }
         }
-        #endregion
-        #region Private Methods
+#endregion
+#region Private Methods
         /// <summary>
         /// Set the value without altering the richtext property
         /// </summary>
@@ -1785,9 +1781,9 @@ namespace OfficeOpenXml
                 }
             }
         }
-        #endregion
-        #region Public Methods
-        #region ConditionalFormatting
+#endregion
+#region Public Methods
+#region ConditionalFormatting
         /// <summary>
         /// Conditional Formatting for this range.
         /// </summary>
@@ -1798,8 +1794,8 @@ namespace OfficeOpenXml
                 return new RangeConditionalFormatting(_worksheet, new ExcelAddress(Address));
             }
         }
-        #endregion
-        #region DataValidation
+#endregion
+#region DataValidation
         /// <summary>
         /// Data validation for this range.
         /// </summary>
@@ -1810,8 +1806,8 @@ namespace OfficeOpenXml
                 return new RangeDataValidation(_worksheet, Address);
             }
         }
-        #endregion
-        #region LoadFromDataReader
+#endregion
+#region LoadFromDataReader
         /// <summary>
         /// Load the data from the datareader starting from the top left cell of the range
         /// </summary>
@@ -1870,9 +1866,9 @@ namespace OfficeOpenXml
             }
             return _worksheet.Cells[_fromRow, _fromCol, row - 1, _fromCol + fieldCount - 1];
         }
-        #endregion
+#endregion
 
-        #region LoadFromDataTable
+#region LoadFromDataTable
         /// <summary>
         /// Load the data from the datatable starting from the top left cell of the range
         /// </summary>
@@ -1935,9 +1931,9 @@ namespace OfficeOpenXml
 
             return _worksheet.Cells[_fromRow, _fromCol, _fromRow + rowArray.Count - 1, _fromCol + Table.Columns.Count - 1];
         }
-        #endregion
+#endregion
 
-        #region LoadFromArrays
+#region LoadFromArrays
         /// <summary>
         /// Loads data from the collection of arrays of objects into the range, starting from
         /// the top-left cell.
@@ -1976,8 +1972,8 @@ namespace OfficeOpenXml
 
             return _worksheet.Cells[_fromRow, _fromCol, _fromRow + rowArray.Count - 1, _fromCol + maxColumn - 1];
         }
-        #endregion
-        #region LoadFromCollection
+#endregion
+#region LoadFromCollection
         /// <summary>
         /// Load a collection into a the worksheet starting from the top left row of the range.
         /// </summary>
@@ -2141,8 +2137,8 @@ namespace OfficeOpenXml
             }
             return r;
         }
-        #endregion
-        #region LoadFromText
+#endregion
+#region LoadFromText
         /// <summary>
         /// Loads a CSV text into a range starting from the top left cell.
         /// Default settings is Comma separation
@@ -2377,8 +2373,8 @@ namespace OfficeOpenXml
         {
             return LoadFromText(File.ReadAllText(TextFile.FullName, Format.Encoding), Format, TableStyle, FirstRowIsHeader);
         }
-        #endregion
-        #region GetValue
+#endregion
+#region GetValue
 
         /// <summary>
         ///     Convert cell value to desired type, including nullable structs.
@@ -2407,7 +2403,7 @@ namespace OfficeOpenXml
         {
             return ConvertUtil.GetTypedCellValue<T>(Value);
         }
-        #endregion
+#endregion
         /// <summary>
         /// Get a range with an offset from the top left cell.
         /// The new range has the same dimensions as the current range
@@ -2787,16 +2783,16 @@ namespace OfficeOpenXml
                 Worksheet.MergedCells.Remove(item);
             }
         }
-        #endregion
-        #region IDisposable Members
+#endregion
+#region IDisposable Members
 
         public void Dispose()
         {
             //_worksheet = null;            
         }
 
-        #endregion
-        #region "Enumerator"
+#endregion
+#region "Enumerator"
         CellsStoreEnumerator<ExcelCoreValue> cellEnum;
         public IEnumerator<ExcelRangeBase> GetEnumerator()
         {
@@ -2866,7 +2862,7 @@ namespace OfficeOpenXml
             _enumAddressIx = -1;
             cellEnum = new CellsStoreEnumerator<ExcelCoreValue>(_worksheet._values, _fromRow, _fromCol, _toRow, _toCol);
         }
-        #endregion
+#endregion
         private struct SortItem<T>
         {
             internal int Row { get; set; }

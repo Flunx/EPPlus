@@ -269,6 +269,7 @@ namespace OfficeOpenXml.Style.XmlAccess
                 _verticalAlign=value;
             }
         }
+#if !UNITY
         public void SetFromFont(System.Drawing.Font Font)
         {
             Name=Font.Name;
@@ -279,6 +280,7 @@ namespace OfficeOpenXml.Style.XmlAccess
             UnderLine=Font.Underline;
             Italic=Font.Italic;
         }
+#endif
         public static float GetFontHeight(string name, float size)
         {
             name = name.StartsWith("@") ? name.Substring(1) : name;

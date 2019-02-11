@@ -242,8 +242,10 @@ namespace OfficeOpenXml
                     CopyVmlDrawing(Copy, added);
                 }
 
+#if !UNITY
                 //Copy HeaderFooter
                 CopyHeaderFooterPictures(Copy, added);
+#endif
 
                 //Copy all relationships 
                 //CopyRelationShips(Copy, added);
@@ -484,6 +486,8 @@ namespace OfficeOpenXml
             }
             added._pivotTables = null;   //Reset collection so it's reloaded when accessing the collection next time.
         }
+
+#if !UNITY
         private void CopyHeaderFooterPictures(ExcelWorksheet Copy, ExcelWorksheet added)
         {
             if (Copy.TopNode != null && Copy.TopNode.SelectSingleNode("d:headerFooter", NameSpaceManager)==null) return;
@@ -514,6 +518,7 @@ namespace OfficeOpenXml
                 }
             }
         }
+#endif
 
         private void CopyText(ExcelHeaderFooterText from, ExcelHeaderFooterText to)
         {
@@ -699,6 +704,7 @@ namespace OfficeOpenXml
                         XmlAttribute relAtt = drawXml.SelectSingleNode(string.Format("//c:chart/@r:id[.='{0}']", prevRelID), Copy.Drawings.NameSpaceManager) as XmlAttribute;
                         relAtt.Value=rel.Id;
                     }
+#if !UNITY
                     else if (draw is ExcelPicture)
                     {
                         ExcelPicture pic = draw as ExcelPicture;
@@ -725,9 +731,10 @@ namespace OfficeOpenXml
                             _pck._images[pic.ImageHash].RefCount++;
                         }
                     }
-                }
-                //rewrite the drawing xml with the new relID's
-                streamDrawing = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write));
+#endif
+            }
+            //rewrite the drawing xml with the new relID's
+            streamDrawing = new StreamWriter(part.GetStream(FileMode.Create, FileAccess.Write));
                 streamDrawing.Write(drawXml.OuterXml);
                 streamDrawing.Flush();
 
@@ -887,8 +894,8 @@ namespace OfficeOpenXml
             }
             return xmlDoc;
 		}
-		#endregion
-		#region Delete Worksheet
+#endregion
+#region Delete Worksheet
 		/// <summary>
 		/// Deletes a worksheet from the collection
 		/// </summary>
@@ -996,7 +1003,7 @@ namespace OfficeOpenXml
                 throw (new ArgumentException("Worksheet is not in the collection."));
             }
         }
-        #endregion
+#endregion
 		internal void ReindexWorksheetDictionary()
 		{
 			var index = _pck._worksheetAdd;
@@ -1089,7 +1096,7 @@ namespace OfficeOpenXml
             }
             return (xlWorksheet);
         }
-        #region MoveBefore and MoveAfter Methods
+#region MoveBefore and MoveAfter Methods
 		/// <summary>
 		/// Moves the source worksheet to the position before the target worksheet
 		/// </summary>
