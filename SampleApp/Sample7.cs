@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using System.Drawing;
+using EPPlus.Drawing;
+
 namespace EPPlusSamples
 {
     class Sample7
@@ -82,8 +80,10 @@ namespace EPPlusSamples
                 // Console.WriteLine("{0:HH.mm.ss}\tCalculate formulas...", DateTime.Now);
                 // ws.Calculate();
 
+#if !UNITY
                 Console.WriteLine("{0:HH.mm.ss}\tAutofit columns and lock and format cells...", DateTime.Now);
                 ws.Cells[rows - 100, 1, rows, 5].AutoFitColumns(5);   //Auto fit using the last 100 rows with minimum width 5
+#endif
                 ws.Column(5).Width = 15;                            //We need to set the width for column F manually since the end sum formula is the widest cell in the column (EPPlus don't calculate any forumlas, so no output text is avalible). 
 
                 //Now we set the sheetprotection and a password.

@@ -30,16 +30,12 @@
  *******************************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Diagnostics;
 using OfficeOpenXml;
 using System.IO;
 using System.Data.SqlClient;
-using OfficeOpenXml.Drawing;
 using OfficeOpenXml.Drawing.Chart;
 using OfficeOpenXml.Style;
-using System.Drawing;
+using EPPlus.Drawing;
 
 namespace EPPlusSamples
 {

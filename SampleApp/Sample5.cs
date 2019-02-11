@@ -29,14 +29,11 @@
  *******************************************************************************
  * Jan Källman		Added		07-JAN-2010
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
-using OfficeOpenXml;    
+using OfficeOpenXml;
 using OfficeOpenXml.Drawing.Chart;
 using OfficeOpenXml.Drawing;
-using System.Drawing;
+using EPPlus.Drawing;
 
 namespace EPPlusSamples
 {

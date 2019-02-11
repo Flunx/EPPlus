@@ -32,6 +32,7 @@
 using OfficeOpenXml;
 using EPPlus.Drawing;
 using OfficeOpenXml.Style;
+
 namespace EPPlusSamples
 {
     class Sample1
@@ -96,9 +97,11 @@ namespace EPPlusSamples
                 //There is actually no need to calculate, Excel will do it for you, but in some cases it might be useful. 
                 //For example if you link to this workbook from another workbook or you will open the workbook in a program that hasn't a calculation engine or 
                 //you want to use the result of a formula in your program.
-                worksheet.Calculate(); 
+                worksheet.Calculate();
 
+#if !UNITY
                 worksheet.Cells.AutoFitColumns(0);  //Autofit columns for all cells
+#endif
 
                 // lets set the header text 
                 worksheet.HeaderFooter.OddHeader.CenteredText = "&24&U&\"Arial,Regular Bold\" Inventory";

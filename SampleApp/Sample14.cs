@@ -29,21 +29,15 @@
  *******************************************************************************
  * Eyal Seagull				Added							2012-04-03
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using OfficeOpenXml;
-using System.Xml;
-using System.Drawing;
 using OfficeOpenXml.Style;
-using OfficeOpenXml.Style.Dxf;
-using OfficeOpenXml.DataValidation;
 using OfficeOpenXml.ConditionalFormatting;
+using EPPlus.Drawing;
 
 namespace EPPlusSamples
 {
-  class Sample14
+    class Sample14
   {
     /// <summary>
     /// Sample 14 - Conditional formatting example

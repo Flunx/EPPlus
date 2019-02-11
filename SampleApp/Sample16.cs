@@ -26,14 +26,12 @@
  * ******************************************************************************
  * Jan Källman                      Added       		        2018-03-20
  *******************************************************************************/
- using OfficeOpenXml;
+using OfficeOpenXml;
 using OfficeOpenXml.Sparkline;
 using OfficeOpenXml.Table;
-using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Globalization;
-using System.Text;
+using EPPlus.Drawing;
 
 namespace EPPlusSamples
 {
@@ -87,7 +85,9 @@ namespace EPPlusSamples
                 sparklineStacked.ColorNegative.SetColor(Color.Blue);
 
                 ws.Cells["A15:A17"].Style.Font.Bold = true;
+#if !UNITY
                 ws.Cells.AutoFitColumns();
+#endif
                 ws.Row(15).Height = 40;
                 ws.Row(16).Height = 40;
                 ws.Row(17).Height = 40;

@@ -47,16 +47,14 @@
  * The author accepts no liability for any damage or loss of business that this product may cause.
  */
 using System;
-using System.IO;
-using System.Xml;
 using OfficeOpenXml;
 using System.Data.SqlClient;
-using System.Drawing;
 using OfficeOpenXml.Style;
+using EPPlus.Drawing;
 
 namespace EPPlusSamples
 {
-	class Sample3
+    class Sample3
 	{
 		/// <summary>
 		/// Sample 3 - creates a workbook and populates using data from the AdventureWorks database
@@ -86,7 +84,10 @@ namespace EPPlusSamples
                     using (ExcelRange r = worksheet.Cells["A1:G1"])
                     {
                         r.Merge = true;
-                        r.Style.Font.SetFromFont(new Font("Britannic Bold", 22, FontStyle.Italic));
+                        //r.Style.Font.SetFromFont(new Font("Britannic Bold", 22, FontStyle.Italic));
+                        r.Style.Font.Name = "Britannic Bold";
+                        r.Style.Font.Size = 22;
+                        r.Style.Font.Italic = true;
                         r.Style.Font.Color.SetColor(Color.White);
                         r.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.CenterContinuous;
                         r.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
@@ -96,7 +97,10 @@ namespace EPPlusSamples
                     using (ExcelRange r = worksheet.Cells["A2:G2"])
                     {
                         r.Merge = true;
-                        r.Style.Font.SetFromFont(new Font("Britannic Bold", 18, FontStyle.Italic));
+                        //r.Style.Font.SetFromFont(new Font("Britannic Bold", 18, FontStyle.Italic));
+                        r.Style.Font.Name = "Britannic Bold";
+                        r.Style.Font.Size = 18;
+                        r.Style.Font.Italic = true;
                         r.Style.Font.Color.SetColor(Color.Black);
                         r.Style.HorizontalAlignment = ExcelHorizontalAlignment.CenterContinuous;
                         r.Style.Fill.PatternType = ExcelFillStyle.Solid;

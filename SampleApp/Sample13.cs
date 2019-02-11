@@ -29,12 +29,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.IO;
 using OfficeOpenXml;
 using System.Data;
 using OfficeOpenXml.Table;
 using System.Reflection;
+
 namespace EPPlusSamples
 {
     /// <summary>
@@ -76,7 +76,9 @@ namespace EPPlusSamples
             wsDt.Cells["A1"].LoadFromDataTable(dt, true, TableStyles.Medium9);
             wsDt.Cells[2, 2, dt.Rows.Count + 1, 2].Style.Numberformat.Format = "#,##0";
             wsDt.Cells[2, 3, dt.Rows.Count + 1, 4].Style.Numberformat.Format = "mm-dd-yy";
+            #if !UNITY
             wsDt.Cells[wsDt.Dimension.Address].AutoFitColumns();
+            #endif
             //Select Name and Created-time...
             var collection = (from row in dt.Select() select new { Name = row["Name"], Created_time = (DateTime)row["Created"] });
 
@@ -87,7 +89,9 @@ namespace EPPlusSamples
 
             //Add some formating...
             wsEnum.Cells[2, 2, dt.Rows.Count - 1, 2].Style.Numberformat.Format = "mm-dd-yy";
+#if !UNITY
             wsEnum.Cells[wsEnum.Dimension.Address].AutoFitColumns();
+#endif
 
             //Load a list of FileDTO objects from the datatable...
             var wsList = pck.Workbook.Worksheets.Add("FromList");
@@ -137,13 +141,15 @@ namespace EPPlusSamples
                                                   );
 
             wsList.Tables.GetFromRange(rng).Columns[2].Name = "Description";
-
+#if !UNITY
             wsList.Cells[wsList.Dimension.Address].AutoFitColumns();
+#endif
 
             //...and save
             var fi = Utils.GetFileInfo("sample13.xlsx");
             pck.SaveAs(fi);
         }
+
         private static DataTable GetDataTable(DirectoryInfo dir)
         {
             DataTable dt = new DataTable("RootDir");

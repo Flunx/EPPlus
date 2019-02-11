@@ -30,14 +30,10 @@
  * Jan Källman		Added		21 Mar 2010
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using OfficeOpenXml;
-using System.Xml;
-using System.Drawing;
-using OfficeOpenXml.Style;
 using System.Linq;
+
 namespace EPPlusSamples
 {
     public static class LinqSample

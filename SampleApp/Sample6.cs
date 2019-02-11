@@ -39,6 +39,7 @@ using OfficeOpenXml.Drawing;
 using OfficeOpenXml.Drawing.Chart;
 using OfficeOpenXml.Style;
 using OfficeOpenXml.Table;
+
 namespace EPPlusSamples
 {
     /// <summary>
@@ -166,8 +167,9 @@ namespace EPPlusSamples
             shape.TextVertical = eTextVerticalType.Horizontal;
             shape.TextAnchoringControl=false;
             ws.Calculate();
+#if !UNITY
             ws.Cells[1,2,row,5].AutoFitColumns();
-
+#endif
             //Add the graph sheet
             AddGraphs(pck, row, dir.FullName);
 
@@ -247,7 +249,9 @@ namespace EPPlusSamples
             using (ExcelRange r = ws.Cells["A1:O1"])
             {
                 r.Merge = true;
-                r.Style.Font.SetFromFont(new Font("Arial", 22, FontStyle.Regular));
+                //r.Style.Font.SetFromFont(new Font("Arial", 22, FontStyle.Regular));
+                r.Style.Font.Name = "Arial";
+                r.Style.Font.Size = 22;
                 r.Style.Font.Color.SetColor(Color.White);
                 r.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.CenterContinuous;
                 r.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
@@ -319,7 +323,9 @@ namespace EPPlusSamples
             ws.Cells["A1:O1"].Style.Border.Top.Style = ExcelBorderStyle.Thin;
             ws.Cells["O1:O43"].Style.Border.Right.Style = ExcelBorderStyle.Thin;
             ws.Cells["A43:O43"].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+#if !UNITY
             ws.Cells[1, 1, row, 2].AutoFitColumns(1);
+#endif
 
             //And last the printersettings
             ws.PrinterSettings.Orientation = eOrientation.Landscape;
@@ -345,7 +351,10 @@ namespace EPPlusSamples
                 using (ExcelRange r = ws.Cells[row, 1, row, 2])
                 {
                     r.Merge = true;
-                    r.Style.Font.SetFromFont(new Font("Arial", 16, FontStyle.Italic));
+                    //r.Style.Font.SetFromFont(new Font("Arial", 16, FontStyle.Italic));
+                    r.Style.Font.Name = "Arial";
+                    r.Style.Font.Size = 16;
+                    r.Style.Font.Italic = true;
                     r.Style.Font.Color.SetColor(Color.White);
                     r.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.CenterContinuous;
                     r.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
@@ -360,7 +369,10 @@ namespace EPPlusSamples
             ws.Cells[row, 2].Value = propertyName;
             using (ExcelRange r = ws.Cells[row, 1, row, 2])
             {
-                r.Style.Font.SetFromFont(new Font("Arial", 12, FontStyle.Bold));
+                //r.Style.Font.SetFromFont(new Font("Arial", 12, FontStyle.Bold));
+                r.Style.Font.Name = "Arial";
+                r.Style.Font.Size = 12;
+                r.Style.Font.Bold = true;
             }
 
             row++;
@@ -437,6 +449,7 @@ namespace EPPlusSamples
         {
             //Get the icon as a bitmap
             Console.WriteLine("Directory " + dir.Name);
+#if !UNITY
             if (!skipIcons)
             {
                 Bitmap icon = GetIcon(dir.FullName);
@@ -449,6 +462,7 @@ namespace EPPlusSamples
                     pic.SetPosition((int)20 * (row - 1) + 2, 0);
                 }
             }
+#endif
             ws.Cells[row, 2].Value = dir.Name;
             ws.Cells[row, 4].Value = dir.CreationTime;
             ws.Cells[row, 5].Value = dir.LastAccessTime;
@@ -471,6 +485,7 @@ namespace EPPlusSamples
             //Add files in the directory
             foreach (FileInfo file in dir.GetFiles())
             {
+#if !UNITY
                 if (!skipIcons)
                 {
                     Bitmap fileIcon = GetIcon(file.FullName);
@@ -482,7 +497,7 @@ namespace EPPlusSamples
                         pic.SetPosition((int)20 * (row - 1) + 2, 0);
                     }
                 }
-
+#endif
                 ws.Cells[row, 2].Value = file.Name;
                 ws.Cells[row, 3].Value = file.Length;
                 ws.Cells[row, 4].Value = file.CreationTime;
@@ -541,6 +556,8 @@ namespace EPPlusSamples
                 _fileSize.Sort();
             }
         }
+
+#if !UNITY
         /// <summary>
         /// Gets the icon for a file or directory
         /// </summary>
@@ -583,5 +600,7 @@ namespace EPPlusSamples
                 return null;
             }
         }
+#endif
+
     }
 }

@@ -27,8 +27,6 @@
  * Mats Alm   		                Added       		        2011-01-08
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
 using OfficeOpenXml;

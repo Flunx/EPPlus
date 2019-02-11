@@ -27,15 +27,13 @@
  * Jan Källman                      Added       		        2012-05-01
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
 using OfficeOpenXml;
-using System.Security.Cryptography.X509Certificates;
-using System.Drawing;
 using OfficeOpenXml.Style;
 using OfficeOpenXml.Drawing.Chart;
+using EPPlus.Drawing;
+
 namespace EPPlusSamples
 {
     class Sample15

@@ -30,17 +30,15 @@
  * Jan Källman		Added		10-SEP-2009
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using OfficeOpenXml;
 
 namespace EPPlusSamples
 {
-	/// <summary>
-	/// Simply opens an existing file and reads some values and properties
-	/// </summary>
-	class Sample2
+    /// <summary>
+    /// Simply opens an existing file and reads some values and properties
+    /// </summary>
+    class Sample2
 	{
 		public static void RunSample2(string FilePath)
 		{

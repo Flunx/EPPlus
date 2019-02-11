@@ -30,14 +30,12 @@
  * Jan Källman		Added		28 Oct 2010
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using OfficeOpenXml;
 using System.IO;
 using OfficeOpenXml.Table;
 using OfficeOpenXml.Drawing.Chart;
 using System.Globalization;
+
 namespace EPPlusSamples
 {
     /// <summary>
@@ -125,7 +123,9 @@ namespace EPPlusSamples
 
             sheet.View.ShowGridLines = false;
             sheet.Calculate();
+#if !UNITY
             sheet.Cells[sheet.Dimension.Address].AutoFitColumns();
+#endif
         }
 
         private static void LoadFile2(ExcelPackage package)
@@ -162,7 +162,9 @@ namespace EPPlusSamples
             tbl.Columns[5].Name = "Profit";
             tbl.TableStyle = TableStyles.Medium10;
 
+#if !UNITY
             sheet.Cells[sheet.Dimension.Address].AutoFitColumns();
+#endif
 
             //Add a chart with two charttypes (Column and Line) and a secondary axis...
             var chart = sheet.Drawings.AddChart("chart2", eChartType.ColumnStacked);

@@ -94,8 +94,10 @@ namespace EPPlusSamples
                 
                 wsData.Cells[2, 6, dataRange.End.Row, 6].Style.Numberformat.Format = "mm-dd-yy";
                 wsData.Cells[2, 7, dataRange.End.Row, 11].Style.Numberformat.Format = "#,##0";
-                
+
+#if !UNITY
                 dataRange.AutoFitColumns();
+#endif
 
                 var wsPivot = pck.Workbook.Worksheets.Add("PivotSimple");
                 var pivotTable1 = wsPivot.PivotTables.Add(wsPivot.Cells["A1"], dataRange, "PerEmploee");
