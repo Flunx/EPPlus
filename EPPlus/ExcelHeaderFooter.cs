@@ -119,7 +119,7 @@ namespace OfficeOpenXml
         /// Get/set the text to appear on the right hand side of the header (or footer) on the worksheet.
 		/// </summary>
 		public string RightAlignedText = null;
-        #if !UNITY
+#if !UNITY
         /// <summary>
         /// Inserts a picture at the end of the text in the header or footer
         /// </summary>
