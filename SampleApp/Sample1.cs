@@ -29,17 +29,12 @@
  *******************************************************************************
  * Jan Källman		Added		21 Mar 2010
  *******************************************************************************/
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
 using OfficeOpenXml;
-using System.Xml;
-using System.Drawing;
+using EPPlus.Drawing;
 using OfficeOpenXml.Style;
 namespace EPPlusSamples
 {
-	class Sample1
+    class Sample1
 	{
         /// <summary>
         /// Sample 1 - simply creates a new workbook from scratch.

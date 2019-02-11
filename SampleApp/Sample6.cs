@@ -31,16 +31,13 @@
  *******************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Drawing;
+using EPPlus.Drawing;
 using OfficeOpenXml;
 using OfficeOpenXml.Drawing;
 using OfficeOpenXml.Drawing.Chart;
-using System.Drawing.Imaging;
 using OfficeOpenXml.Style;
-using OfficeOpenXml.Style.XmlAccess;
 using OfficeOpenXml.Table;
 namespace EPPlusSamples
 {

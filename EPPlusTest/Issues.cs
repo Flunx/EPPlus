@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Drawing;
+using EPPlus.Drawing;
 using System.Linq;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,10 +14,7 @@ using System.Collections.Generic;
 using OfficeOpenXml.Table.PivotTable;
 using OfficeOpenXml.Drawing.Chart;
 using System.Text;
-using System.Dynamic;
 using System.Globalization;
-using OfficeOpenXml.Drawing;
-using OfficeOpenXml.FormulaParsing;
 
 namespace EPPlusTest
 {

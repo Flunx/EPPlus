@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using EPPlus.Drawing;
 using System.IO;
 using System.Xml;
 using EPPlusTest.Properties;
@@ -8,8 +8,6 @@ using OfficeOpenXml;
 using OfficeOpenXml.Drawing;
 using OfficeOpenXml.Drawing.Chart;
 using OfficeOpenXml.Style;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace EPPlusTest
 {

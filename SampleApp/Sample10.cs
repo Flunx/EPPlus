@@ -30,12 +30,9 @@
  * Jan Källman		Added		28 Oct 2010
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using OfficeOpenXml;
-using System.Drawing;
+using EPPlus.Drawing;
 using OfficeOpenXml.Style;
 
 namespace EPPlusSamples

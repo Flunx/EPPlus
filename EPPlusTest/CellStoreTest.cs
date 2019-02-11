@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using EPPlus.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;

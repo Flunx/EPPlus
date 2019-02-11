@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OfficeOpenXml;
 using System.IO;
-using OfficeOpenXml.Drawing.Chart;
 using OfficeOpenXml.Style;
-using OfficeOpenXml.Drawing;
 using OfficeOpenXml.ConditionalFormatting;
 using System.Threading;
-using System.Drawing;
+using EPPlus.Drawing;
 namespace EPPlusTest
 {
     [TestClass]

@@ -1,20 +1,16 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OfficeOpenXml;
 using OfficeOpenXml.ConditionalFormatting;
 using System.IO;
 using OfficeOpenXml.ConditionalFormatting.Contracts;
-using System.Drawing;
+using EPPlus.Drawing;
 
 namespace EPPlusTest
 {
-  /// <summary>
-  /// Test the Conditional Formatting feature
-  /// </summary>
-  [TestClass]
+    /// <summary>
+    /// Test the Conditional Formatting feature
+    /// </summary>
+    [TestClass]
   public class ConditionalFormatting
   {
     private TestContext testContextInstance;
