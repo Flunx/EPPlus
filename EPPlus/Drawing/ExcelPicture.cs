@@ -36,7 +36,7 @@ using System.Globalization;
 using System.Text;
 using System.Xml;
 using System.IO;
-using System.Drawing;
+using EPPlus.Drawing;
 using System.Drawing.Imaging;
 using System.Diagnostics;
 using OfficeOpenXml.Utils;

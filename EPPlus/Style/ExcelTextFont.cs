@@ -35,7 +35,7 @@ using System.Globalization;
 using System.Text;
 using System.Xml;
 using OfficeOpenXml.Drawing;
-using System.Drawing;
+using EPPlus.Drawing;
 
 namespace OfficeOpenXml.Style
 {

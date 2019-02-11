@@ -31,7 +31,7 @@
  *******************************************************************************/
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using EPPlus.Drawing;
 using System.Globalization;
 using System.Text;
 using System.Xml;

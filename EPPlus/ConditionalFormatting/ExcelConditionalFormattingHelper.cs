@@ -34,7 +34,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using OfficeOpenXml.Utils;
-using System.Drawing;
+using EPPlus.Drawing;
 using System.Globalization;
 using System.Xml;
 

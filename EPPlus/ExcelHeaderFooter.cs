@@ -35,7 +35,7 @@
 using System;
 using System.Xml;
 using System.Text.RegularExpressions;
-using System.Drawing;
+using EPPlus.Drawing;
 using System.Collections.Generic;
 using OfficeOpenXml.Drawing.Vml;
 using System.IO;

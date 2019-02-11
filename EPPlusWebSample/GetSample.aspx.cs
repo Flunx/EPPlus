@@ -26,14 +26,10 @@
  * Jan Källman		Added		23-MAR-2010
  *******************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using OfficeOpenXml;
 using System.IO;
 using OfficeOpenXml.Style;
-using System.Drawing;
+using EPPlus.Drawing;
 using System.Text;
 namespace EPPlusWebSample
 {

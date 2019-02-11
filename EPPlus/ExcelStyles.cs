@@ -33,17 +33,15 @@ using System;
 using System.Xml;
 using System.Linq;
 using System.Collections.Generic;
-using OfficeOpenXml.FormulaParsing.Excel.Functions.Logical;
-using draw=System.Drawing;
 using OfficeOpenXml.Style;
 using OfficeOpenXml.Style.XmlAccess;
 using OfficeOpenXml.Style.Dxf;
 using OfficeOpenXml.ConditionalFormatting;
 namespace OfficeOpenXml
 {
-	/// <summary>
-	/// Containts all shared cell styles for a workbook
-	/// </summary>
+    /// <summary>
+    /// Containts all shared cell styles for a workbook
+    /// </summary>
     public sealed class ExcelStyles : XmlHelper
     {
         const string NumberFormatsPath = "d:styleSheet/d:numFmts";

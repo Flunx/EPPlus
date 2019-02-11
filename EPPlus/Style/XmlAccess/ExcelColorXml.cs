@@ -170,7 +170,7 @@ namespace OfficeOpenXml.Style.XmlAccess
             _rgb = "";
             _auto = false;
         }
-        public void SetColor(System.Drawing.Color color)
+        public void SetColor(EPPlus.Drawing.Color color)
         {
             Clear();
             _rgb = color.ToArgb().ToString("X");

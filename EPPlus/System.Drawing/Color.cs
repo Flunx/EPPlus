@@ -1,8 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 
-namespace System.Drawing
+namespace EPPlus.Drawing
 {
     //------------------------------------------------------------------------------
     // <copyright file="Color.cs" company="Microsoft">
