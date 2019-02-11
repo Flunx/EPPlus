@@ -1,3 +1,5 @@
+# This is a fork which is intended to be used with Unity for PC, Mac, iOS and Android
+
 # EPPlus
 Create advanced Excel spreadsheets using .NET, without the need of interop.
 
