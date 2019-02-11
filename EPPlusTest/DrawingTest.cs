@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !UNITY
+using System;
 using EPPlus.Drawing;
 using System.IO;
 using System.Xml;
@@ -977,3 +978,4 @@ namespace EPPlusTest
         }
     }
 }
+#endif

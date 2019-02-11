@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !UNITY
+using System;
 using System.Diagnostics;
 using EPPlus.Drawing;
 using System.Linq;
@@ -1797,7 +1798,7 @@ namespace EPPlusTest
                 pck.Save();
             }
         }
-        #region Issue 44
+#region Issue 44
         private static string PIVOT_WS_NAME = "Pivot";
         private static string DATA_WS_NAME = "Data";
         [TestMethod, Ignore]
@@ -1846,7 +1847,7 @@ namespace EPPlusTest
             ExcelPivotTableField dt = piv.RowFields.Add(piv.Fields["Date"]);
             dt.AddDateGrouping(eDateGroupBy.Days | eDateGroupBy.Months);
         }
-        #endregion
+#endregion
         [TestMethod]
         public void Issue66()
         {
@@ -2386,3 +2387,4 @@ namespace EPPlusTest
         }
     }
 }
+#endif
