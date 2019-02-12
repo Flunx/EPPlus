@@ -525,7 +525,7 @@ namespace OfficeOpenXml
         /// </summary>
         private void Init()
         {
-            DoAdjustDrawings = true;
+           DoAdjustDrawings = true;
 #if (Core)
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);  //Add Support for codepage 1252
 
@@ -535,6 +535,8 @@ namespace OfficeOpenXml
             var c = build.Build();
 
             var v = c["EPPlus:ExcelPackage:Compatibility:IsWorksheets1Based"];
+#elif UNITY
+            string v = null;
 #else
             var v = ConfigurationManager.AppSettings["EPPlus:ExcelPackage.Compatibility.IsWorksheets1Based"];
 #endif
